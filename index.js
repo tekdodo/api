@@ -1,6 +1,20 @@
 const express = require("express")
 const app = express()
-const port = 3000
+const port = 3001
+app.use(express.json())
+const pessoas = []
+
+app.post('/pessoas', (req, res)=>{
+    const pessoa = req.body
+    pessoas.push(pessoa)
+    res.send("Pessoa cadastrada com sucesso!")
+}) 
+
+app.get('/pessoas', (req, res)=>{
+
+    res.send(pessoas)
+
+})
 
 app.get('/ola', (req, res)=>{
 
@@ -11,4 +25,3 @@ app.get('/ola', (req, res)=>{
 app.listen(port, ()=>{
     console.log("API rodando...")
 })
-
